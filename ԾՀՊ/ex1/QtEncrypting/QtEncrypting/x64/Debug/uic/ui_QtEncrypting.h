@@ -15,7 +15,6 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
-#include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QWidget>
@@ -31,40 +30,40 @@ public:
     QLineEdit *lineEdit;
     QComboBox *comboBox;
     QLabel *label;
-    QMenuBar *menuBar;
     QStatusBar *statusBar;
 
     void setupUi(QMainWindow *QtEncryptingClass)
     {
         if (QtEncryptingClass->objectName().isEmpty())
             QtEncryptingClass->setObjectName("QtEncryptingClass");
-        QtEncryptingClass->resize(600, 400);
+        QtEncryptingClass->resize(315, 192);
         centralWidget = new QWidget(QtEncryptingClass);
         centralWidget->setObjectName("centralWidget");
+        QSizePolicy sizePolicy(QSizePolicy::Policy::Fixed, QSizePolicy::Policy::Fixed);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(centralWidget->sizePolicy().hasHeightForWidth());
+        centralWidget->setSizePolicy(sizePolicy);
         encryptButton = new QPushButton(centralWidget);
         encryptButton->setObjectName("encryptButton");
-        encryptButton->setGeometry(QRect(100, 160, 80, 24));
+        encryptButton->setGeometry(QRect(70, 100, 80, 24));
         decryptButton = new QPushButton(centralWidget);
         decryptButton->setObjectName("decryptButton");
-        decryptButton->setGeometry(QRect(190, 160, 80, 24));
+        decryptButton->setGeometry(QRect(160, 100, 80, 24));
         lineEdit = new QLineEdit(centralWidget);
         lineEdit->setObjectName("lineEdit");
-        lineEdit->setGeometry(QRect(100, 120, 171, 24));
+        lineEdit->setGeometry(QRect(70, 70, 171, 24));
         comboBox = new QComboBox(centralWidget);
         comboBox->addItem(QString());
         comboBox->addItem(QString());
         comboBox->setObjectName("comboBox");
-        comboBox->setGeometry(QRect(100, 80, 171, 24));
+        comboBox->setGeometry(QRect(70, 40, 171, 24));
         comboBox->setEditable(false);
         comboBox->setModelColumn(0);
         label = new QLabel(centralWidget);
         label->setObjectName("label");
-        label->setGeometry(QRect(110, 200, 161, 41));
+        label->setGeometry(QRect(70, 130, 161, 41));
         QtEncryptingClass->setCentralWidget(centralWidget);
-        menuBar = new QMenuBar(QtEncryptingClass);
-        menuBar->setObjectName("menuBar");
-        menuBar->setGeometry(QRect(0, 0, 600, 21));
-        QtEncryptingClass->setMenuBar(menuBar);
         statusBar = new QStatusBar(QtEncryptingClass);
         statusBar->setObjectName("statusBar");
         QtEncryptingClass->setStatusBar(statusBar);

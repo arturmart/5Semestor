@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+</head>
+<body>
+
+<h1>Form</h1>
+
+<form action="submit" method="post">
+    <!-- Личные данные -->
+    <fieldset>
+        <legend>Личные данные</legend>
+
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name"  placeholder="Name" required>
+        <input type="text" id="name" name="last name" placeholder="Last Name" required>
+        <br>
+
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br>
+
+        <label for="phone">Phone:</label><br>
+        <input type="tel" id="phone" name="phone" required><br>
+
+        <label for="phone">Gender:</label><br>
+
+        <input type="radio" id="male" name="gender" value="Male"></input>
+        <label for="css">Male</label>
+        <input type="radio" id="male" name="gender" value="Male"></input>
+        <label for="css">Female</label><br>
+
+
+        <label for="city">City:</label><br>
+        <input type="text" id="city" name="city" required><br>
+
+        <input type="submit" value="Semd">
+    </fieldset>
+
+    
+    
+</form>
+
+</body>
+</html>

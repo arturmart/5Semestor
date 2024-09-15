@@ -7,15 +7,15 @@
 class EncryptInterface {
 public:
     virtual ~EncryptInterface() {}
-    virtual QString Encrypt(const QString& text) = 0;
-    virtual QString Decrypt(const QString& text) = 0;
+    virtual QString Encrypt(const QString& text, const int shift) = 0;
+    virtual QString Decrypt(const QString& text, const int shift) = 0;
 };
 
 // Тестовая реализация интерфейса шифрования
-class EncryptTest : public EncryptInterface {
-public:
-    QString Encrypt(const QString& text) override;  // Только объявление
-    QString Decrypt(const QString& text) override;  // Только объявление
-};
 
+class EncryptCaesar : public EncryptInterface {
+public:
+    QString Encrypt(const QString& text, const int shift) override;  // Только объявление
+    QString Decrypt(const QString& text, const int shift) override;  // Только объявление
+};
 #endif // ENCRYPT_H

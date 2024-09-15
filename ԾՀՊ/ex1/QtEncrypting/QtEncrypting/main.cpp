@@ -17,7 +17,8 @@ void handleEncryptButtonClick(QtEncrypting* encryptingInstance) {
     // Это функция, которая будет вызываться, когда кнопка нажата
     qDebug() << "Encrypt Button clicked(in Main)!";
 
-    //encryptingInstance->getLineText()
+    QString data = encryptingInstance->getEditText();
+    //encryptingInstance->getLineTextArgument();
     QString buf;
 
     if (encryptingInstance->getComboBox() == 0) {
@@ -26,9 +27,10 @@ void handleEncryptButtonClick(QtEncrypting* encryptingInstance) {
     else if (encryptingInstance->getComboBox() == 1) {
         buf = "1";
     }
-    
-    
-    encryptingInstance->setLabelText("Encrypt "+ buf);
+    EncryptCaesar et;
+   
+    int arg = encryptingInstance->getLineTextArgument().toInt();
+    encryptingInstance->setEditTextOutText(et.Encrypt(data,arg));
 
 
 }
@@ -36,7 +38,20 @@ void handleEncryptButtonClick(QtEncrypting* encryptingInstance) {
 void handleDecryptButtonClick(QtEncrypting* encryptingInstance) {
     // Это функция, которая будет вызываться, когда кнопка нажата
     qDebug() << "Decrypt Button clicked!(in Main)";
-    encryptingInstance->setLabelText("Decrypt");
+    QString data = encryptingInstance->getEditText();
+    //encryptingInstance->getLineTextArgument();
+    QString buf;
+
+    if (encryptingInstance->getComboBox() == 0) {
+        buf = "0";
+    }
+    else if (encryptingInstance->getComboBox() == 1) {
+        buf = "1";
+    }
+
+    EncryptCaesar et;
+    int arg = encryptingInstance->getLineTextArgument().toInt();
+    encryptingInstance->setEditTextOutText(et.Decrypt(data, arg));
 
 }
 
@@ -54,10 +69,10 @@ int main(int argc, char *argv[])
     QObject::connect(&w, &QtEncrypting::decryptButtonClicked, &handleDecryptButtonClick);
 
 
-    EncryptTest et;
-
     
-    w.setLabelText(et.Encrypt("10"));
+
+    //EncryptCaesar et;
+    //w.setLabelText(et.Encrypt("10",3));
 
    // MainApplication* app = new MainApplication();
 

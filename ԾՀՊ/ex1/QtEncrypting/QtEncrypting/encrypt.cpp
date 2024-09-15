@@ -1,9 +1,26 @@
 ﻿#include "encrypt.h"
 
-QString EncryptTest::Encrypt(const QString& text) {
-    return "test En " + text;
+
+
+QString EncryptCaesar::Encrypt(const QString& text, int shift ) {
+
+    QString str = text;
+
+    for (int i = 0; i < str.size(); ++i) {
+        QChar ch = str[i];
+        str[i] = QChar(ch.unicode() + shift);
+    }
+
+    return str;
 }
 
-QString EncryptTest::Decrypt(const QString& text) {
-    return "test Dc " + text;
+QString EncryptCaesar::Decrypt(const QString& text, int shift){
+    QString str = text;
+
+    for (int i = 0; i < str.size(); ++i) {
+        QChar ch = str[i];
+        str[i] = QChar(ch.unicode() - shift);
+    }
+
+    return str;
 }

@@ -30,17 +30,23 @@ void QtEncrypting::on_decryptButton_clicked()
 
 }
 
-void QtEncrypting::setLabelText(const QString& text)
+void QtEncrypting::setEditTextOutText(const QString& text)
 {
     // Изменяем текст на QLabel
-    ui.label->setText(text);
+    ui.textEditOut->setText(text);
     
 }
 
-QString QtEncrypting::getLineText()
+QString QtEncrypting::getEditText()
 {
     // Изменяем текст на QLabel
-    return (ui.lineEdit->text());
+    return (ui.textEdit->document()->toRawText());
+
+}
+QString QtEncrypting::getLineTextArgument()
+{
+    // Изменяем текст на QLabel
+    return (ui.lineEditArgument->text());
 
 }
 

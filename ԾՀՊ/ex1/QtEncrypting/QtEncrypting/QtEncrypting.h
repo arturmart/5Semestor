@@ -23,8 +23,9 @@ private slots:
     void on_decryptButton_clicked();
 
 public slots: 
-    void setLabelText(const QString& text);  // Слот для получения данных
-    QString getLineText();
+    void setEditTextOutText(const QString& text);  // Слот для получения данных
+    QString getEditText();
+    QString getLineTextArgument();
     int getComboBox();
 
 

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <style>
+        table, th, td {
+          
+          border-collapse: collapse;
+          padding: 10px;
+          text-align:left;
+          vertical-align: top;
+          
+          
+          
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .container {
+            text-align:center;
+            width: 40%;
+            margin: 0 auto;
+        }
+
+        .contact-info h2{
+            color:azure;
+        }
+        .section {
+            text-align:left;
+            margin-bottom: 20px;
+        }
+         .avatar,.skills, .experience, .education {
+            background: #f4f4f4;
+            padding: 15px;
+            border-radius: 20px;
+        }
+        .contact-info{
+            color:azure;
+            
+            background: #ffc823;
+            padding: 15px;
+            border-radius: 20px;
+        }
+        ul {
+            list-style-type:circle;
+            padding: 10;
+        }
+        ul li {
+            margin-bottom: 10px;
+        }
+        </style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Резюме</title>
+    
+</head>
+<body>
+
+<div class="container ">
+    <h1>CV</h1>
+
+    <div class="avatar section">
+        <table>
+            <tr>
+                
+                <th rowspan="10"> <img src="data:image/png;base64,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" alt="Avatar" width="200" height="200"></th>
+                <th colspan = "5">  <h2>Artur Martirosyan</h2>  </th>
+
+            </tr>
+            <tr>    <th>    </th>   </tr>
+            <tr>    <th>    </th>   </tr>
+            <tr>    <th>    <b>Age:</b> 22 </th>   </tr>
+            <tr>    <th>    <b>Residence:</b> Yerevan </th>   </tr>
+            <tr>    <th>    </th>   </tr>
+            <tr>    <th>    </th>   </tr>
+            
+            
+        </table>
+    </div>
+
+    <div class="education section">
+        <h2>Education</h2>
+        <p>National Polytechnic University of Armenia, 2020 - Our Days</p>
+        <p>Software engineering</p>
+    </div>
+
+    <div class="skills section">
+        <h2>Skills</h2>
+        <ul>
+            <li>Software engineering on C/C++ and python</li>
+            <li>working with git</li>
+            <li>CAD and Machine Enginering</li>
+        </ul>
+    </div>
+
+    <div class="experience section">
+        <h2>Work experience</h2>
+        <div class="job">
+            <h3>Project Manager</h3>
+            <p>Company: Davaro LLC</p>
+            <ul>
+                <li>CAD Design and Machine Enginering</li>
+                <li>Software Enginering</li>
+                <li>Взаимодействие с бэкенд-разработчиками для интеграции API.</li>
+            </ul>
+        </div>
+        
+    </div>
+
+
+    <div class="contact-info section">
+        <h2>Contact</h2>
+        <ul>
+            <li>phone Number: +374 (00) 00-00-00</li>
+            <li>Email: my.mail@mail.com</li>
+            <li>City: Yerevan, Armenia</li>
+        </ul>
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+</body>
+</html>

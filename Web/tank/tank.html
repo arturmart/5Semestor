@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+
+<style>
+#tank {
+	margin-left:10px;
+	margin-top:50px;
+	
+}
+</style>
+</head>
+
+<body>
+
+<h2>Tank Game</h2>
+<button onclick="stepTop()">top</button>
+<button onclick="stepBottom()">bottom</button> <br>
+<button onclick="stepLeft()">left</button>
+<button onclick="stepRight()">right</button> <br>
+
+
+<img src="https://art.ngfiles.com/images/740000/740347_henskelion_red-tank.gif?f1545038092" id="tank" alt="Avatar" width="100" height="100">
+
+
+
+
+
+<script>
+let xPos = 0;
+let yPos = 0;
+
+function stepRight(){
+	xPos+=20;
+	tank.style.transform = "scaleX(-1)";
+	reDraw()
+	
+
+}
+function stepLeft(){
+	xPos-=20;
+	tank.style.transform = "scaleX(1)";
+	reDraw()
+	
+
+}
+
+function stepBottom(){
+	yPos+=20;
+	reDraw()
+	
+
+}
+function stepTop(){
+	yPos-=20;
+	reDraw()
+	
+
+}
+function reDraw(){
+	
+	let tank = document.getElementById("tank")
+	tank.style.marginLeft = xPos+"px";
+	tank.style.marginTop = yPos+"px";
+	
+	
+
+}
+</script>
+
+</body>
+</html>
+
+
+
+
+
+

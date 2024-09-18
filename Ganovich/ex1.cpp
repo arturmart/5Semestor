@@ -34,7 +34,7 @@ public:
 
     void printResult(std::vector<std::pair<int, int>> X) {
         for (int i = 0; i < X.size(); i++) {
-            std::cout << arr[X[i].first] << " + " << arr[X[i].second] << std::endl;
+            std::cout << arr[X[i].first]<<"["<<X[i].first<<"]" << " + " << arr[X[i].second]<<"["<<X[i].second<<"]" << std::endl;
         }
     }
     

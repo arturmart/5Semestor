@@ -2,6 +2,7 @@
 #include <iostream>
 #include <vector>
 #include <utility>
+#include <random>
 
 class getTwoVarSum {
 public:
@@ -46,8 +47,22 @@ private:
 
 int main()
 {
-    std::vector<int> vectorName = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20};
+    srand(time(NULL));
+    
+    
+    
+    
+    std::vector<int> vectorName;
+    for(int i =0;i<20; i++){
+        vectorName.push_back(rand()%10+1);
+    }
+    
+    for(int i =0;i<vectorName.size();i++){
+        std::cout<<vectorName[i]<<" ";
+    }
+    
+    std::cout<<std::endl;
+    
     getTwoVarSum myGTVS(vectorName);
     myGTVS.printResult(myGTVS.ChechkSum(10));
 }
-

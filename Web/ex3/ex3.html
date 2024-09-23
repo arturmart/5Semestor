@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var cnt =1;
+        const htmlconten =`
+            <div class="window" id="temp">
+            <div class="header">
+                <span id="name">ojkpjjk</span>
+                
+                <span>
+                    <input type="button" value="X" class="exit" onclick="exitWindow(this)">
+                    <input type="button" value="□" class="exit">
+                    <input type="button" value="-" class="exit">
+                </span>
+                
+            </div>
+            <div class="body">
+                    <p>gfasgasg</p>
+                    <p>gfasgasg</p>
+                    <p>gfasgasg</p>
+            </div>
+        </div>
+            `;
+
+        function createWindowByStr(){
+            console.log("barev");
+            //document.getElementById("window").addEventListener
+            
+            
+            
+            
+            document.getElementById("windowArea").innerHTML += htmlconten;
+           
+            document.getElementById("temp").id = "win" + cnt;
+            
+            cnt++;
+        }
+
+        function exitWindow(obj){
+            var target = obj.parentNode.parentNode.parentNode.id;
+            console.log(target);
+            document.getElementById(target).remove();
+        }
+        
+
+    </script>
+
+    <style>
+        .window{
+            width: 400px;
+            margin: 2px;
+            padding: 2px;
+        }
+        .window,.window .header, .window .body{
+            border: 2px solid;
+            padding: 2px;
+            margin: 2px;
+        }
+        .window .header{
+            background-color:darkred;
+        }
+        .window .body{
+            background-color:darkkhaki;
+        }
+        .window .header span{
+            color:aqua;
+        }
+
+        .window .exit{
+            float:right;
+        }
+
+       
+    </style>
+</head>
+<body>
+    <input type="button" value="create window" onclick="createWindowByStr()">
+    <div id = "windowArea">
+        <div class="window" id="win0">
+            <div class="header">
+                <span id="name">ojkpjjk</span>
+                
+                <span>
+                    <input type="button" value="X" class="exit" onclick="exitWindow(this)">
+                    <input type="button" value="□" class="exit">
+                    <input type="button" value="-" class="exit">
+                </span>
+                
+            </div>
+            <div class="body">
+                    <p>gfasgasg</p>
+                    <p>gfasgasg</p>
+                    <p>gfasgasg</p>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+
+</body>
+</html>

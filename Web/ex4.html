@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var cnt =0;
+        let json = [
+            {"title" : "win1", 
+             "content" : "<h1>aaa</h1>"   
+            },
+            {"title" : "win2", 
+             "content" : "bbb"   
+            },
+            {"title" : "win3", 
+             "content" : "ccc"   
+            },
+        ]
+
+        function byJson(){
+            for(let i = 0 ; i < json.length;i++){
+                console.log(json[i].content);
+
+
+            }
+        }
+        function createWindowByStr(){
+            console.log("barev");
+            //document.getElementById("window").addEventListener
+            
+            
+            
+            
+            document.getElementById("windowArea").innerHTML += htmlconten;
+           
+            document.getElementById("temp").id = "win" + cnt;
+            
+            cnt++;
+        }
+
+        function exitWindow(obj){
+            var target = obj.parentNode.parentNode.parentNode.id;
+            console.log(target);
+            document.getElementById(target).remove();
+        }
+
+        function windowMain(){
+
+            const main = document.createElement("div");
+            main.setAttribute("class","window");
+            main.setAttribute("id","win"+cnt);
+            
+
+            const header = document.createElement("div");
+            header.setAttribute("class","header");
+            main.appendChild(header);
+
+            const body = document.createElement("div");
+            body.setAttribute("class","body");
+            main.appendChild(body);
+
+            const name = document.createElement("span");
+            name.setAttribute("id","name");
+            header.appendChild(name);
+            name.innerText = "my Window "+cnt;
+
+            const tools = document.createElement("span");
+            header.appendChild(tools);
+
+            const btn1 = document.createElement("input");
+            btn1.setAttribute("type","button");
+            btn1.setAttribute("value","X");
+            btn1.setAttribute("class","exit");
+            //btn1.setAttribute("onclick","exitWindow(this)");
+            btn1.addEventListener("click", function(ev){
+                
+                exitWindow(btn1);
+                //console.log(this);
+                //console.log(ev);
+                //console.log(btn1);
+
+            });
+            tools.appendChild(btn1);
+
+            const btn2 = document.createElement("input");
+            btn2.setAttribute("type","button");
+            btn2.setAttribute("value","□");
+            btn2.setAttribute("class","exit");
+            tools.appendChild(btn2);
+
+            const btn3 = document.createElement("input");
+            btn3.setAttribute("type","button");
+            btn3.setAttribute("value","-");
+            btn3.setAttribute("class","exit");
+            tools.appendChild(btn3);
+
+            const insideText = document.createElement("p");
+            if(cnt < json.length) insideText.innerHTML = json[cnt].content;
+            else insideText.innerText = "1 Line \n 2 Line \n 3 Line ";
+         
+            body.appendChild(insideText);
+            
+
+            
+
+            
+
+            
+            //para.innerText = "This is a paragraph";
+            cnt++;
+            document.getElementById("windowArea").appendChild(main);
+        }
+        
+
+    </script>
+
+    <style>
+        .window{
+            width: 400px;
+            margin: 2px;
+            padding: 2px;
+        }
+        .window,.window .header, .window .body{
+            border: 2px solid;
+            padding: 2px;
+            margin: 2px;
+        }
+        .window .header{
+            background-color:darkred;
+        }
+        .window .body{
+            background-color:darkkhaki;
+        }
+        .window .header span{
+            color:aqua;
+        }
+
+        .window .exit{
+            float:right;
+        }
+
+       
+    </style>
+</head>
+<body>
+    <input type="button" value="create window" onclick="createWindowByStr()">
+    <input type="button" value="create window test" onclick="windowMain()">
+    <input type="button" value="create window json" onclick="byJson()">
+    <div id = "windowArea">
+    </div>
+    
+    
+    
+
+</body>
+</html>

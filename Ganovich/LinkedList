@@ -1,0 +1,88 @@
+#include <iostream>
+
+
+class LinkedList {
+private:
+    class  Node {
+    public:
+        int value;
+        Node* next;
+
+        Node(int val) {
+            value = val;
+            next = nullptr;
+        }
+    };
+
+
+    Node* head;
+
+public:
+
+    LinkedList() : head(nullptr) {}
+
+    int getSize() const {
+        int count = 0;                     // Counter to track the number of nodes
+        Node* localNode = head;              // Start from the head node
+
+        // Traverse the list and count the nodes
+        while (localNode != nullptr) {
+            count++;
+            localNode = localNode->next;
+        }
+
+        return count;                      // Return the total count
+    }
+
+    void insertAtBeginning(int value) {
+
+        Node* newNode = new Node(value);
+        newNode->next = head;
+        head = newNode;
+    }
+
+    Node* getEnd() {
+        return getById(getSize() - 1);
+    }
+
+    Node* getById(int id) {
+        Node* localNode = head;
+
+        for (int i = 0; i < id; i++) {
+            localNode = localNode->next;
+            if (localNode == nullptr) return NULL;
+        }
+        return localNode;
+
+    }
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+};
+int main()
+{
+    LinkedList list;
+    list.insertAtBeginning(1);
+    list.insertAtBeginning(2);
+    list.insertAtBeginning(3);
+
+    for (int i = 0; i < list.getSize(); i++) {
+        std::cout << list.getById(i)->value << std::endl;
+    }
+
+    
+}
+

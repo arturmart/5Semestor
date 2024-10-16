@@ -1,5 +1,5 @@
 arr = "hello world"
-
+#input(arr)
 varA = "aeiouh"
 varB = "bcdfgjklmnpqrstvwxz"
 

@@ -46,7 +46,6 @@ for i in arr:
     elif(findArr(i,arrInt)):
         arrSymbol+=1
 
-print(arrNum)
-print(arrAlpha)
-print(arrSymbol)
-
+print("Num: ", arrNum)
+print("Alphobet: ", arrAlpha)
+print("symbols: ", arrSymbol)

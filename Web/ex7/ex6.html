@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <style>
+        .window {
+            width: 400px;
+            margin: 2px;
+            padding: 2px;
+        }
+
+        .window,
+        .window .header,
+        .window .body {
+            border: 2px solid;
+            padding: 2px;
+            margin: 2px;
+        }
+
+        .window .header {
+            background-color: darkred;
+        }
+
+        .window .body {
+            background-color: darkkhaki;
+        }
+
+        .window .header span {
+            color: aqua;
+        }
+
+        .window .exit,
+        .min,
+        .max {
+            float: right;
+        }
+
+
+        .windowMax {
+            width: 600px;
+            margin: 2px;
+            padding: 2px;
+        }
+
+        .windowMax,
+        .windowMax .header,
+        .windowMax .body {
+            border: 2px solid;
+            padding: 2px;
+            margin: 2px;
+        }
+
+        .windowMax .header {
+            background-color: darkred;
+        }
+
+        .windowMax .body {
+            background-color: darkkhaki;
+        }
+
+        .windowMax .header span {
+            color: aqua;
+        }
+
+        .windowMax .exit,
+        .min,
+        .max {
+            float: right;
+        }
+    </style>
+</head>
+
+<body>
+
+    <input type="button" value="create window test" onclick="windowMain()">
+    <input type="button" value="Log to Server" onclick="logToServer()">
+    <div id="windowArea">
+    </div>
+
+
+
+    <script>
+        var cnt = 0;
+        let json = [
+            {
+                "title": "win1",
+                "content": "<h1>aaa</h1>"
+            },
+            {
+                "title": "win2",
+                "content": "bbb"
+            },
+            {
+                "title": "win3",
+                "content": "ccc"
+            },
+        ]
+
+
+        function logToServer() {
+            console.log("log to server ");
+
+            const dataToSend = {
+                name: "name",
+                email: "emale"
+            };
+
+            // Send data using the Fetch API
+            fetch("process.php", {
+                method: "POST", // HTTP method
+                headers: {
+                    "Content-Type": "application/json" // Send data as JSON
+                },
+                body: JSON.stringify(dataToSend) // Convert JS object to JSON
+            })
+            .then(response => response.json()) // Handle the server's response
+            .then(data => {
+                console.log("Server Response:", data);
+                alert("Data sent successfully!");
+            })
+            .catch(error => {
+                console.error("Error:", error);
+            });
+            
+        }
+
+        function exitWindow(obj) {
+            //var target = obj.parentNode.parentNode.parentNode.id;
+            //target.btn1.setAttribute("value","Z");
+
+            console.log("Exit " + obj.id);
+            //document.getElementById(obj.id).remove();
+            obj.remove();
+        }
+
+        function minWindow(main, inner) {
+
+            if (inner.getAttribute("b")) {
+                console.log("Open "+inner.getAttribute("b"));
+
+                inner.innerHTML = inner.getAttribute("b");
+
+                var d = ""
+                inner.setAttribute("b", d);
+                
+            }
+            else{
+                
+                var d = inner.innerHTML
+                inner.setAttribute("b", d);
+                console.log("Close "+inner.getAttribute("b"));
+                inner.innerHTML = "";
+                
+            }
+        }
+
+        function maxWindow(obj, maxBtn) {
+
+            if (obj.getAttribute("btnStatus") == "std") {
+
+                console.log("Max " + obj);
+                maxBtn.setAttribute("value", "🗗");
+                console.log(maxBtn);
+                obj.setAttribute("class", "windowMax");
+                obj.setAttribute("btnStatus", "max");
+
+            } else if (obj.getAttribute("btnStatus") == "max") {
+                console.log("Max " + obj);
+                maxBtn.setAttribute("value", "🗖");
+                console.log(maxBtn);
+                obj.setAttribute("class", "window");
+                obj.setAttribute("btnStatus", "std");
+
+            }
+
+
+
+
+        }
+
+        function windowMain() {
+
+            const main = document.createElement("div");
+            main.setAttribute("btnStatus", "std");
+
+            main.setAttribute("class", "window");
+            main.setAttribute("id", "win" + cnt);
+
+
+            const header = document.createElement("div");
+            header.setAttribute("class", "header");
+            main.appendChild(header);
+
+            const body = document.createElement("div");
+            body.setAttribute("class", "body");
+            main.appendChild(body);
+
+            const insideText = document.createElement("p");
+            insideText.setAttribute("id", "inner");
+            insideText.setAttribute("b", "");
+            if (cnt < json.length) insideText.innerHTML = json[cnt].content;
+            else insideText.innerText = "1 Line \n 2 Line \n 3 Line ";
+
+            body.appendChild(insideText);
+
+
+
+            const name = document.createElement("span");
+            name.setAttribute("id", "name");
+            header.appendChild(name);
+            name.innerText = "my Window " + cnt;
+
+            const tools = document.createElement("span");
+            header.appendChild(tools);
+
+            const btn1 = document.createElement("input");
+            btn1.setAttribute("type", "button");
+            btn1.setAttribute("value", "🗙");
+            btn1.setAttribute("class", "exit");
+            //btn1.setAttribute("onclick","exitWindow(this)");
+            btn1.addEventListener("click", function (ev) {
+
+                exitWindow(main);
+                //console.log(this);
+                //console.log(ev);
+                //console.log(btn1);
+
+            });
+            tools.appendChild(btn1);
+
+            const btn2 = document.createElement("input");
+            btn2.setAttribute("type", "button");
+            btn2.setAttribute("value", "🗖");
+            btn2.setAttribute("class", "max");
+            btn2.addEventListener("click",
+                function (ev) { maxWindow(main, btn2); });
+            tools.appendChild(btn2);
+
+            const btn3 = document.createElement("input");
+            btn3.setAttribute("type", "button");
+            btn3.setAttribute("value", "🗕");
+            btn3.setAttribute("class", "min");
+            btn3.addEventListener("click",
+                function (ev) { minWindow(main, insideText); });
+            tools.appendChild(btn3);
+
+
+
+
+
+
+
+
+
+            //para.innerText = "This is a paragraph";
+            cnt++;
+            document.getElementById("windowArea").appendChild(main);
+        }
+
+
+    </script>
+</body>
+
+</html>

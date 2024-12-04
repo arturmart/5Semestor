@@ -18,9 +18,8 @@ public:
         if (numOfElements > capacity * 3 / 4) reSize(2 * capacity);
 
         int index = hash(key);
-        std::pair<std::string, T> pr(key, value);
-
-        list[index].push_back(pr);
+   
+        list[index].emplace_back(key, value);
         numOfElements++;
 
         //if (list[index].empty()) list[index].push_back(value);
@@ -32,9 +31,8 @@ public:
 
 
         int index = hash(key);
-        std::pair<std::string, T> pr(key, value);
 
-        otherList[index].push_back(pr);
+        otherList[index].emplace_back(key, value);
 
 
         //if (list[index].empty()) list[index].push_back(value);
@@ -47,13 +45,13 @@ public:
         int sum = 0;
         int factor = 31;
         for (int i = 0; i < key.size(); i++) {
-            std::cout << "key[" << key << "][" << i << "]:" << (int)key[i] << '\n';
+            //std::cout << "key[" << key << "][" << i << "]:" << (int)key[i] << '\n';
             //sum = sum % capacity + ((int)key[i] * PRIME_FACTOR) % capacity;
             sum = ((sum % capacity) + (((int)key[i]) * factor) % capacity) % capacity;
-            std::cout << "sum " << sum << '\n';
+            //std::cout << "sum " << sum << '\n';
 
             factor = ((factor % INT16_MAX) * (31 % INT16_MAX)) % INT16_MAX;
-            std::cout << "factor "<< factor << '\n';
+            //std::cout << "factor "<< factor << '\n';
         }
 
 
@@ -74,10 +72,10 @@ public:
 
 
             }
-            return NULL;
+            return T();
         }
         else {
-            return NULL;
+            return T();
         }
 
     }
@@ -229,8 +227,8 @@ int main()
     */
 
 
-    std::string word1 = "hello world 2024";
-    std::string word2 = "wello 4202 horld";
+    std::string word1 = "hello world d";
+    std::string word2 = "wello d horld";
 
     HTable<int> ht1;
     HTable<int> ht2;
@@ -257,11 +255,9 @@ int main()
     for (int i = 0; i < word1.size(); i++) {
         std::string src = std::string{ word1[i] };
         if (ht1.search(src)) {
-            if (ht1[src] == ht2[src]) {
-              
-            }
-            else {
+            if (ht1[src] != ht2[src]) {
                 flag = false;
+                break;
             }
         }
     }

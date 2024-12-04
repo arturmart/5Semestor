@@ -1,5 +1,3 @@
-// pakagcer.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
-//
 
 #include <iostream>
 #include <stack>
@@ -34,9 +32,7 @@ public:
 
         }
 
-        if (stk.empty()) return(true);
-        
-        else return(false);
+        return stk.empty();
 
 
 

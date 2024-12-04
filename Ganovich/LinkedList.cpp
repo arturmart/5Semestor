@@ -3,6 +3,7 @@
 
 class LinkedList {
 private:
+
     class  Node {
     public:
         int value;
